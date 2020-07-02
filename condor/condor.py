@@ -70,7 +70,7 @@ def initial_community(CO,method="LCS",project=False):
     #Stores initial community in the condor object.
     reg_index = [i.index for i in CO["G"].vs.select(type_in=[1])]
     reg_memb = [vc.membership[i] for i in reg_index]
-    T0 = pd.DataFrame(zip(reg_index,reg_memb))
+    T0 = pd.DataFrame(list(zip(reg_index,reg_memb))) # edit to avoid error 'data argument can't be an iterator'
     T0.columns = ["index","community"]    
     CO["reg_memb"] = T0
     
